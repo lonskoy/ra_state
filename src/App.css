@@ -1,18 +1,23 @@
-.conteiner {
-  display: table;
-}
-
-.projects {
+.toolBar_list {
   display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
+  gap: 10px;
 }
 
-.toolBar {
+.toolBar_item {
+  border: 1px solid gray;
+  padding: 5px;
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.toolBar_item_active {
+  background-color: grey;
+  border: 1px solid gray;
+  padding: 5px;
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.projectItem {
   display: flex;
-  gap: 5px;
-}
-
-.project_item {
-  
 }

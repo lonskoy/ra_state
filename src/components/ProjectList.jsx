@@ -1,13 +1,6 @@
-export const ProjectList = (props) => {
+export const ProjectList = (projects, selected) => {
     return (
-        <>
-            <div className="projects">
-                {props.forEach(elem => {
-                    return (
-                        <div></div>
-                    )
-                })}
-            </div>
-        </>
+        projects.map(project => project.category === selected);
+        console.log(projects);
     );
 }

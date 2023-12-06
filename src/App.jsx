@@ -1,15 +1,13 @@
-import './App.css'
-import { ProjectList } from './components/ProjectList'
-import { Toolbar } from './components/Toolbar'
+import { Portfolio } from './components/Portfolio';
+import {Toolbar} from './components/Toolbar'
+const filters = ["All", "Websites", "Flayers", "Business Cards"];
+export const selected = "All";
 
-function App() {
-
-  return (
-    <div className='conteiner'>
-        <Toolbar />
-        <ProjectList />
-    </div>
-  )
-}
-
-export default App
+export const App = () => {
+    return (
+        <>
+            <Toolbar {filters, selected} />
+            <Portfolio />
+        </>
+    );
+} 
