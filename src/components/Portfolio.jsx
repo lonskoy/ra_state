@@ -1,8 +1,7 @@
 import { selected } from "../App";
-import { createElement } from 'react';
 import { ProjectList } from "./ProjectList";
 
-const projects = [{
+export const projects = [{
   img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/mon.jpg",
   category: "Business Cards"
 }, {
@@ -57,11 +56,10 @@ const projects = [{
 
 export const Portfolio = () => {
     return (
-      ProjectList(projects, selected).map(project => {
-        createElement('div', {
-          background-img: URL({project.img});
-          className: 'projectItem';
-        })
-      })
+      <div>
+          {ProjectList(projects, selected).map((project, index) => (
+            <div className="projectItem" key={index} style={{backgroundImage: `url(${project.img})`}}></div>
+          ))}
+      </div>
     );
 }
