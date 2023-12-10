@@ -1,65 +1,37 @@
-import { selected } from "../App";
+import { Toolbar } from "./Toolbar";
 import { ProjectList } from "./ProjectList";
-
-export const projects = [{
-  img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/mon.jpg",
-  category: "Business Cards"
-}, {
-  img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/200.jpg",
-  category: "Websites"
-}, {
-  img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/emi_haze.jpg",
-  category: "Websites"
-}, {
-  img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/codystretch.jpg",
-  category: "Websites"
-}, {
-  img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/Triangle_003.jpg",
-  category: "Business Cards"
-}, {
-  img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/place200x290.png",
-  category: "Websites"
-}, {
-  img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/200.jpg",
-  category: "Websites"
-}, {
-  img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/transmission.jpg",
-  category: "Business Cards"
-}, {
-  img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/place200x290_1.png",
-  category: "Websites"
-}, {
-  img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/place200x290_2.png",
-  category: "Flayers"
-}, {
-  img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/the_ninetys_brand.jpg",
-  category: "Websites"
-}, {
-  img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/dia.jpg",
-  category: "Business Cards"
-}, {
-  img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/Triangle_350x197.jpg",
-  category: "Websites"
-}, {
-  img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/emi_haze.jpg",
-  category: "Websites"
-}, {
-  img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/transmission.jpg",
-  category: "Business Cards"
-}, {
-  img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/Triangle_350x197_1.jpg",
-  category: "Websites"
-}, {
-  img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/place200x290_3.png",
-  category: "Flayers"
-}];
+import { useState } from "react";
+import { projects } from "../data";
 
 export const Portfolio = () => {
-    return (
-      <div>
-          {ProjectList(projects, selected).map((project, index) => (
-            <div className="projectItem" key={index} style={{backgroundImage: `url(${project.img})`}}></div>
-          ))}
-      </div>
-    );
+
+  const filters = ["All", "Websites", "Flayers", "Business Cards"];
+  const [selected, setSelected] = useState("All");
+  const [filtersProject, setFiltersProject] = useState(projects);
+
+
+  const onClickHandler = (filter) => {
+    setSelected(filter);
+    if(filter === 'All') {
+      setFiltersProject(projects);
+      return
+    }
+    const filtredArray = projects.filter(project => project.category === filter);
+    setFiltersProject(filtredArray);
+  }
+
+  console.log(filtersProject);
+
+  return (
+    < div className="conteiner">
+      <Toolbar
+        filters={filters}
+        selected={selected}
+        onClick={onClickHandler} />
+
+       <ProjectList projectFilter={filtersProject} />
+
+    </div>
+  );
+
 }

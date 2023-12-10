@@ -1,6 +1,7 @@
 .conteiner {
   display: block;
-  width: 60%;
+  width: 75%;
+  margin: 0 auto;
 }
 
 .toolBar_list {
@@ -23,8 +24,16 @@
   cursor: pointer;
 }
 
-.projectItem {
+.projectList {
   display: flex;
-  width: auto;
-  height: auto;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
+
+.projectItem {
+  width: 30%;
+  height: auto;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+

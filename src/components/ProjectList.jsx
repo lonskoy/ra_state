@@ -1,5 +1,7 @@
-export const ProjectList = (projects, selected) => {
+export const ProjectList = ({projectFilter}) => {
     return (
-        projects.map(project => project.category === selected)
+        <div className="projectList">
+            {projectFilter.map((project, index) => (<div key={index} className="projectItem "><img src={project.img}></img></div>))}
+        </div>
     );
 }
